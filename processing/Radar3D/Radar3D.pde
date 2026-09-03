@@ -11,16 +11,16 @@ int panAngle, tiltAngle, dist;
 // Must match the Arduino sketch's sweep ranges
 final int panMin = 15, panMax = 165;
 final int tiltMin = 30, tiltMax = 90;
-final int levelTilt = 60; // tiltAngle that corresponds to "straight ahead" (horizontal)
+final int levelTilt = 60;
 
-final float maxRangeCm = 100; // ignore serial data farther than this
+final float maxRangeCm = 100; // ignore serial data farther than this (can be changed)
 
-// Point cloud storage: one 3D point per (pan, tilt) reading we've received
+// one 3D point per (pan, tilt) reading we've received
 ArrayList<PVector> points = new ArrayList<PVector>();
 ArrayList<Integer>  pointDist = new ArrayList<Integer>();
 final int MAX_POINTS = 4000; // cap so old points fade out of the cloud
 
-// Orbit-control state
+// orbit control state
 float rotY = -0.6;
 float rotX = 0.35;
 float zoom = 1.0;
@@ -28,7 +28,6 @@ float zoom = 1.0;
 void setup() {
   size(1100, 800, P3D); // enable 3D renderer
 
-  // NOTE: change the port name/index to match your machine, same as your 2D sketch
   println(Serial.list());
   //String portName = Serial.list()[0];
   myPort = new Serial(this, portName, 115200);
@@ -47,14 +46,14 @@ void draw() {
   drawPointCloud();
   drawCurrentSweepLine();
 
-  hint(DISABLE_DEPTH_TEST); // draw HUD text on top, unaffected by 3D rotation
+  hint(DISABLE_DEPTH_TEST); // draw text on top
   camera();
   drawHUD();
   hint(ENABLE_DEPTH_TEST);
 }
 
 // Convert a (panAngle, tiltAngle, distance) reading into an (x, y, z) point.
-// pan  -> azimuth, sweeps left/right in the horizontal plane (x/z)
+// pan  -> sweeps left/right in the horizontal plane (x/z)
 // tilt -> elevation, sweeps up/down (y). Processing's y-axis points DOWN,
 // so we negate it to make "up" visually up.
 PVector toXYZ(float pan, float tilt, float d) {
@@ -105,8 +104,7 @@ void drawPointCloud() {
 }
 
 void drawCurrentSweepLine() {
-  // shows the sensor's current pan/tilt heading as a bright line, like the
-  // sweeping line in the original 2D sketch
+  // shows the sensor's current pan/tilt heading as a bright sweeping line
   stroke(30, 250, 60);
   strokeWeight(3);
   PVector tip = toXYZ(panAngle, tiltAngle, maxRangeCm);
