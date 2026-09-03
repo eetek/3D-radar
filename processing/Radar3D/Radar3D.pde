@@ -8,14 +8,14 @@ int index1, index2;
 
 int panAngle, tiltAngle, dist;
 
-// Must match the Arduino sketch's sweep ranges
+// Must match the Arduino code
 final int panMin = 15, panMax = 165;
 final int tiltMin = 30, tiltMax = 90;
 final int levelTilt = 60;
 
 final float maxRangeCm = 100; // ignore serial data farther than this (can be changed)
 
-// one 3D point per (pan, tilt) reading we've received
+// one 3D point per (pan, tilt) reading we received
 ArrayList<PVector> points = new ArrayList<PVector>();
 ArrayList<Integer>  pointDist = new ArrayList<Integer>();
 final int MAX_POINTS = 4000; // cap so old points fade out of the cloud
@@ -26,10 +26,9 @@ float rotX = 0.35;
 float zoom = 1.0;
 
 void setup() {
-  size(1100, 800, P3D); // enable 3D renderer
+  size(1100, 800, P3D); // enables 3D renderer
 
   println(Serial.list());
-  //String portName = Serial.list()[0];
   myPort = new Serial(this, portName, 115200);
   myPort.bufferUntil('.');
 }
@@ -46,13 +45,13 @@ void draw() {
   drawPointCloud();
   drawCurrentSweepLine();
 
-  hint(DISABLE_DEPTH_TEST); // draw text on top
+  hint(DISABLE_DEPTH_TEST); // draw text on top of widnow
   camera();
   drawHUD();
   hint(ENABLE_DEPTH_TEST);
 }
 
-// Convert a (panAngle, tiltAngle, distance) reading into an (x, y, z) point.
+// onvert a (panAngle, tiltAngle, distance) reading into a (x, y, z) point.
 // pan  -> sweeps left/right in the horizontal plane (x/z)
 // tilt -> elevation, sweeps up/down (y). Processing's y-axis points DOWN,
 // so we negate it to make "up" visually up.
@@ -73,7 +72,7 @@ void serialEvent(Serial p) {
 
   index1 = data.indexOf(",");
   index2 = data.indexOf(",", index1 + 1);
-  if (index1 == -1 || index2 == -1) return; // malformed record, skip it
+  if (index1 == -1 || index2 == -1) return; // skips it
 
   panAngle  = int(data.substring(0, index1));
   tiltAngle = int(data.substring(index1 + 1, index2));
