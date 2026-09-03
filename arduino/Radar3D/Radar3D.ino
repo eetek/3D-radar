@@ -12,8 +12,8 @@ Servo tiltServo;
 const int panMin  = 15,  panMax  = 165;   // left/right
 const int tiltMin = 30,  tiltMax = 90;    // down/up
 
-const int panStep  = 3;   // bigger step = faster scan, lower horizontal resolution
-const int tiltStep = 5;   // bigger step = fewer "rows", faster full-frame scan
+const int panStep  = 3;   // bigger step = faster scan
+const int tiltStep = 5;   // bigger step = fewer "rows"
 
 long duration;
 int  distance;
@@ -22,14 +22,14 @@ int  panAngle, tiltAngle;
 void setup() {
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-  Serial.begin(115200);       // faster baud since we're now sending 3x the data
+  Serial.begin(115200);       // faster baud since we're now sending 3x the data than the 2d project
   panServo.attach(panPin);
   tiltServo.attach(tiltPin);
 }
 
 void loop() {
   // sweep tilt from bottom to top, for each tilt "row" sweep pan across.
-  // snap-back at the end of every row.
+  // snap back at the end of every row.
   for (tiltAngle = tiltMin; tiltAngle <= tiltMax; tiltAngle += tiltStep) {
     tiltServo.write(tiltAngle);
     delay(50);
@@ -68,7 +68,7 @@ int calculateDistance() {
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
 
-  // timeout (~25ms ≈ 4m max range) so a missed echo doesn't freeze the sweep
+  // timeout (~25ms ≈ 4m max range) so a missed echo doesn't stop the sweep
   duration = pulseIn(echoPin, HIGH, 25000);
   int d = duration * 0.034 / 2;
   if (d == 0) d = 999; // no echo returned -> treat as "nothing in range"
