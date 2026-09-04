@@ -44,8 +44,8 @@ Below you can see some photos of how the mapping turned out. notice how the gree
 | HC-SR04 Echo | 8 |
 | Pan servo signal | 10 |
 | Tilt servo signal | 11 |
-| HC-SR04 VCC / Servo power | 5V (external supply recommended) |
-| HC-SR04 GND / Servo GND | GND (common ground with Arduino) |
+| HC-SR04 VCC | 5V |
+| HC-SR04 GND | GND (common ground with Arduino) |
 
 ![Wiring Diagram](schematics/"3d radar.png") 
 
