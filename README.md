@@ -6,10 +6,8 @@ This project is an extension of the 2D Radar i built (see repo). The difference 
 
 ## Demo
 
-![3d Radar demo video](3d_radar.mov)
+![Demo](3d_radar.gif)
 
-
-<video src="[YOUR_GITHUB_ASSET_URL](https://github.com/eetek/3D-radar/blob/main/3d_radar.mov)" controls width="100%"></video>
 
 
 its a little hard to see here, but when the sensor detects objects/surfaces in front of it, it maps these green points in the 3D view. As you can see when i moved the bottle, more green points appeared in that position (in the top left of the black screen). The the more saturated the green points are in 3D view, the closer they are in real life. 
