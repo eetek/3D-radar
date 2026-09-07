@@ -107,7 +107,3 @@ Both sketches expose a few parameters worth tuning for your setup:
 - The HC-SR04's practical reliable range is roughly 2cm–400cm. So you can choose which range you want within this.
 - Flat, hard surfaces reflect sound well and give clean readings. Thin, soft, or angled objects can produce sparse or missing points.
 - A flat surface directly facing the sensor at a constant distance will appear as a smooth *curved* sheet in the point cloud. this is expected, since distance is measured radially from the sensor, not as a flat plane.
-
-## License
-
-<!-- Add your license here, e.g. MIT -->
