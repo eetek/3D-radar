@@ -53,7 +53,7 @@ Below you can see some photos of how the mapping turned out. notice how the gree
 
 The schematics is also available as a pdf in the schematics folder. 
 
-**Note** In the wiring diagram it looks like only one AA battery was used, but you need 4 in this project to supply enough power. Tinkercad didnt have an option for 4
+**Note** In the wiring diagram it looks like only one AA battery was used, but you need 4 in this project to supply enough power to the servos. Tinkercad didnt have an option for 4
 
 ## Software Requirements
 
