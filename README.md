@@ -1,5 +1,6 @@
 # 3D Radar
-<img src="images/3d_radar.JPG" width="50%">
+<img src="images/3d_radar.jpg" width="50%">
+
 A pan/tilt ultrasonic radar built with an Arduino Uno, an ultrasonic HC-SR04 sensor and two servo motors. The project is visualized in real time as a 3D point cloud using Processing.
 
 This project is an extension of the 2D Radar i built (see repo). The difference is that instead of sweeping left-right along one flat plane, the sensor in the 3D radar sweeps both pan (left/right) and tilt (up/down), building up a 3D map of the surfaces and objects in front of it, within 100cm (you can change this range).
