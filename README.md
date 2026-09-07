@@ -49,7 +49,7 @@ Below you can see some photos of how the mapping turned out. notice how the gree
 | HC-SR04 VCC | 5V |
 | HC-SR04 GND | GND (common ground with Arduino) |
 
-![Wiring Diagram](schematics/"3d radar.png") 
+![Wiring Diagram](schematics/3d%20radar.png)
 
 The schematics is also available as a pdf in the schematics folder. 
 
